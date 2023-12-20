@@ -15,25 +15,26 @@ class HomeCategories extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
-       
         children: [
           Padding(
             padding: EdgeInsets.zero,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                 Icon(
-                  iconData,
-                  size: 40,
-                  
-                ),
-                Text(
-                  title,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-                Text(description),
-              ],
+            child: Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Icon(
+                    iconData,
+                    size: 40,
+                    
+                  ),
+                  Text(
+                    title,
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(description),
+                ],
+              ),
             ),
           )
         ],
@@ -47,9 +48,7 @@ class HomeCategories extends StatelessWidget {
           // begin: Alignment.topLeft,
           // end: Alignment.bottomRight,
         ),
-        boxShadow: [
-          BoxShadow(color: Colors.black26, spreadRadius: 1, blurRadius: 2)
-        ],
+        
         borderRadius: BorderRadius.circular(5),
       ),
     );

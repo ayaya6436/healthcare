@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:healthcare/pages/chat.dart';
-import 'package:healthcare/pages/data/homeData.dart';
+import 'package:healthcare/data/homeData.dart';
 import 'package:healthcare/pages/findHospital.dart';
 import 'package:healthcare/pages/firstAdd.dart';
-import 'package:healthcare/pages/homeCategories.dart';
+import 'package:healthcare/pages/reportEmergency.dart';
+import 'package:healthcare/widget/homeCategories.dart';
 import 'package:healthcare/pages/profile.dart';
+import 'package:healthcare/widget/navigationBottom.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,14 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int index = 0;
-  int screen = 0;
-  List screenRoutes = [
-    Home(),
-    Chat(),
-    FirstAdd(),
-    Profile(),
-  ];
-
+ 
   List screenHome = [
     FindHospital(),
     Chat(),
@@ -108,7 +103,11 @@ class _HomeState extends State<Home> {
                           style: TextStyle(),
                         ),
                         OutlinedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(context, 
+                            MaterialPageRoute(builder: (context)=>ReportEmergency())
+                            );
+                          },
                           child: Text("Report emergency"),
                           style: OutlinedButton.styleFrom(
                             primary: Colors.grey,
@@ -152,8 +151,8 @@ class _HomeState extends State<Home> {
                 itemCount: HOMEDATA.length,
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 200,
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 1,
                 ),
                 shrinkWrap: true,
                 itemBuilder: (context, index) {
@@ -179,49 +178,7 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-        ),
-        child: NavigationBar(
-          backgroundColor: Colors.white,
-          height: 60,
-          selectedIndex: index,
-          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-          onDestinationSelected: (index) {
-            setState(() => this.index = index);
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => screenRoutes[index],
-              ),
-            );
-          },
-          destinations: [
-            NavigationDestination(
-              icon: Icon(Icons.home),
-              selectedIcon: Icon(Icons.home),
-              label: "Home",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.chat),
-              selectedIcon: Icon(Icons.chat),
-              label: "Chat",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.health_and_safety),
-              selectedIcon: Icon(Icons.health_and_safety),
-              label: "First Aid",
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.person),
-              selectedIcon: Icon(Icons.person),
-              label: "Profile",
-            )
-          ],
-        ),
-      ),
+      bottomNavigationBar: NavigationBottom(),
     );
   }
 }

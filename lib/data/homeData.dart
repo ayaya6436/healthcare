@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:healthcare/pages/model/homeModel.dart';
+import 'package:healthcare/model/homeModel.dart';
 
 const HOMEDATA = [
   HomeModel(

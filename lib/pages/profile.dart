@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare/widget/navigationBottom.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -17,6 +18,7 @@ class _ProfileState extends State<Profile> {
         title: Text("profile"),
        )
         ]),
+        bottomNavigationBar: NavigationBottom(),
     );
   }
 }

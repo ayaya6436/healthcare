@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthcare/widget/navigationBottom.dart';
 
 class FirstAdd extends StatefulWidget {
   const FirstAdd({super.key});
@@ -16,6 +17,8 @@ class _FirstAddState extends State<FirstAdd> {
         title: Text("First add"),
        )
         ]),
+        bottomNavigationBar: NavigationBottom(),
+
     );
   }
 }
